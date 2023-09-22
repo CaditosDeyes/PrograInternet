@@ -24,7 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import INICIO from "./Inscripcion";
+import INICIO from "./Navegacion";
 
 type SectionProps = PropsWithChildren<{
   title: string;

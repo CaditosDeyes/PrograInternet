@@ -1,4 +1,4 @@
-import { Modal, Text, TextInput, TouchableOpacity, View, } from 'react-native'
+import { Alert, Modal, Text, TextInput, TouchableOpacity, View, } from 'react-native'
 import React, { Component } from 'react'
 
 export default class Inscripcion extends Component {
@@ -8,6 +8,9 @@ export default class Inscripcion extends Component {
             //declaracion de variables
             modalVentanaCorreo:false,
             modalVentanaFacebook:false,
+            nombre:"",
+            correo:"",
+            password:"",
         };
       }
   render() {
@@ -16,12 +19,42 @@ export default class Inscripcion extends Component {
     }
     const cierraModalCorreo = () => {
         this.setState({modalVentanaCorreo:false});
+        //codigo para enviar y recibir datos del server
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            console.log(xhttp.responseText);
+                if(xhttp.responseText === "1"){
+                    Alert.alert("Registro insertado");
+                }else{
+                    Alert.alert("Error");
+                }
+            }
+        };
+        xhttp.open("GET", "https://ground-editor.000webhostapp.com/datos.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password, true);
+        xhttp.send();
     }
     const facebook = () => {
         this.setState({modalVentanaFacebook:true});
     }
     const cierraModalFacebook = () => {
         this.setState({modalVentanaFacebook:false});
+        //codigo para enviar y recibir datos del server
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            console.log(xhttp.responseText);
+                if(xhttp.responseText === "1"){
+                    Alert.alert("Registro insertado");
+                }else{
+                    Alert.alert("Error");
+                }
+            }
+        };
+        xhttp.open("GET", "https://ground-editor.000webhostapp.com/datos.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password, true);
+        xhttp.send();
     }
     return (
       <View>
@@ -84,7 +117,9 @@ export default class Inscripcion extends Component {
                         color:"white",
 
                     }}>Nombre:</Text>
-                    <TextInput></TextInput>
+                    <TextInput onChangeText={nombre => this.setState({nombre})}>
+                        
+                    </TextInput>
 
                     <Text style={{
                         fontSize:20,
@@ -92,7 +127,9 @@ export default class Inscripcion extends Component {
                         color:"white",
 
                     }}>Correo:</Text>
-                    <TextInput></TextInput>
+                    <TextInput onChangeText={correo => this.setState({correo})}>
+                    
+                    </TextInput>
 
                     <Text style={{
                         fontSize:20,
@@ -100,7 +137,9 @@ export default class Inscripcion extends Component {
                         color:"white",
 
                     }}>Password:</Text>
-                    <TextInput></TextInput>
+                    <TextInput onChangeText={password => this.setState({password})}>
+                    
+                    </TextInput>
                     <TouchableOpacity style={{
                             borderWidth:2,
                             width:200,
@@ -138,7 +177,8 @@ export default class Inscripcion extends Component {
                         color:"white",
 
                     }}>Nombre:</Text>
-                    <TextInput></TextInput>
+                    <TextInput onChangeText={nombre => this.setState({nombre})} >
+                    </TextInput>
 
                     <Text style={{
                         fontSize:20,
@@ -146,7 +186,8 @@ export default class Inscripcion extends Component {
                         color:"white",
 
                     }}>Correo:</Text>
-                    <TextInput></TextInput>
+                    <TextInput onChangeText={correo => this.setState({correo})}>
+                    </TextInput>
 
                     <Text style={{
                         fontSize:20,
@@ -154,7 +195,8 @@ export default class Inscripcion extends Component {
                         color:"white",
 
                     }}>Password:</Text>
-                    <TextInput></TextInput>
+                    <TextInput onChangeText={password => this.setState({password})} >
+                    </TextInput>
                     <TouchableOpacity style={{
                             borderWidth:2,
                             width:200,
