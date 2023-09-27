@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Modal, TextInput } from 'react-native';
+import MenuDrawer from 'react-native-side-drawer';
 //la importacion de lo que usemos
 
 export default class Inicio extends Component {
