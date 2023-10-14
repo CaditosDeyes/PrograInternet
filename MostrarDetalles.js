@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import MenuDrawer from 'react-native-side-drawer';
 
 export default class MostrarDetalles extends Component {
@@ -7,6 +7,7 @@ export default class MostrarDetalles extends Component {
     super(props);
     this.state = {
       open: false,
+      nombre: this.props.route.params.nombre,
     };
   }
 
@@ -17,10 +18,11 @@ export default class MostrarDetalles extends Component {
   drawerContent = () => {
     return (
       <View style={styles.containerDrawer}>
-        <Text style={styles.paragraph}>Bienvenido</Text>
-        <TouchableOpacity onPress={this.toggleOpen}>
-          <Text>Cerrar drawer</Text>
-        </TouchableOpacity>
+        <Text style={styles.paragraph}>Bienvenido{this.state.nombre}</Text>
+          <Button
+            title="Cerrar drawer"
+            onPress={this.toggleOpen}
+          />
       </View>
     );
   };
@@ -102,7 +104,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   detallesTrabajador: {
-    marginTop: 30,
+    alignItems: "center",
+    //marginTop: 30,
     color: "black",
     marginLeft: 70,
     fontSize: 20,

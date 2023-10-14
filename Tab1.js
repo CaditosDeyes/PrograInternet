@@ -9,6 +9,7 @@ export default class Tab1 extends Component {
       open: false,
       dataSource: [],
       showDetails: [], // Nuevo estado para controlar la visibilidad de los detalles
+      nombre: this.props.route.params.nombre,
     };
   }
 
@@ -29,7 +30,7 @@ export default class Tab1 extends Component {
   drawerContent = () => {
     return (
       <View style={styles.containerDrawer}>
-        <Text style={styles.paragraph}>Bienvenido</Text>
+        <Text style={styles.paragraph}>Bienvenido {this.state.nombre}</Text>
         <Button
           title="Cerrar drawer"
           onPress={this.toggleOpen}
@@ -39,8 +40,8 @@ export default class Tab1 extends Component {
   };
 
   componentDidMount() {
-    var xhttp = new XMLHttpRequest();
     _this = this;
+    var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         console.log(xhttp.responseText);
