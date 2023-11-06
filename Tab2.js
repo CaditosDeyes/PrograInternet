@@ -14,6 +14,7 @@ export default class VideoList extends Component {
         { id: '1', videoId: 'AtAVKDDfAeg' },
         { id: '2', videoId: 'lslh3YNDIiE' },
         { id: '3', videoId: 'GoDODwVmjo8' },
+        { id: '4', videoId: 'Gd61igGI4IE' },
         // Puedes seguir agregando más videos
       ],
     };
@@ -39,7 +40,7 @@ export default class VideoList extends Component {
     const videoUrl = `https://www.youtube.com/embed/${item.videoId}`;
     
     return (
-      <View style={{ height: 300, width: 420, marginRight: 3 }}>
+      <View style={{ height: 300, width: 420, marginRight: 3, backgroundColor:"gray", }}>
         <Text style={styles.textoVideos}>Video # {item.id}</Text>
         <WebView
           source={{ uri: videoUrl }}
@@ -71,7 +72,6 @@ export default class VideoList extends Component {
             </TouchableOpacity>
           </View>
           <View>
-            <Text style={styles.textoVideos}>Ventana de videos</Text>
             <FlatList
               data={this.state.videoData}
               renderItem={this.renderVideoItem}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TAB1 from './Tab1';
 import TAB2 from './Tab2';
+import TAB3 from './Tab3';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Menu extends Component {
@@ -32,6 +33,13 @@ export default class Menu extends Component {
           tabBarLabel: 'Información',
           tabBarIcon: () => (
             <Icon name="newspaper-outline" color={"red"} size={40} />
+          ),}}
+          />
+          <Tab.Screen name="Mapa" component={TAB3} 
+        options={{
+          tabBarLabel: 'Mapa',
+          tabBarIcon: () => (
+            <Icon name="map-outline" color={"red"} size={40} />
           ),}}
           />
     </Tab.Navigator>
